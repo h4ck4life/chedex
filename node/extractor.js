@@ -75,6 +75,7 @@ var getPostContentByUrl = function name(postList) {
                 axios.get(post.url, axiosConfig)
                     .then(function (response) {
                         const $ = cheerio.load(response.data);
+                        post.id = post.url.split('p=')[1];
                         post.content = postContentSelector($);
                         post.date = $('div.post-footer').text().trim();
                         resolve(post);
