@@ -59,6 +59,7 @@
     "edition": "octane"
   },
   "dependencies": {
+    "async": "^3.2.0",
     "axios": "^0.19.2"
   }
 }
