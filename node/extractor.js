@@ -2,6 +2,7 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 const fs = require('fs');
 const eachOfSeries = require('async/eachOfSeries');
+const moment = require('moment');
 
 const baseUrl = 'http://chedet.cc';
 const axiosConfig = {
@@ -95,25 +96,32 @@ var getPostContentByUrl = function name(postList) {
  * 
  */
 (function () {
-    console.time("timeblock");
+    console.time("Completed in");
+
+    var fullContent = [];
     var totalPageNumber = Array.from({ length: 100 }, (x, i) => i + 1);
+
     eachOfSeries(totalPageNumber, function (value, key, callback) {
         getPostListingByPage(value)
             .then((resultPostListing) => {
                 return getPostContentByUrl(resultPostListing);
+
             }).then((resultWithPostContent) => {
-                //console.log(resultWithPostContent);
-                var fileName = `page_${value}.json`;
-                fs.writeFile(fileName, JSON.stringify(resultWithPostContent), function (err) {
-                    if (err) return console.log(err);
-                    console.log(`Output for result page ${value} --> ${fileName}`);
-                    callback();
-                });
+                fullContent.push(resultWithPostContent.map(x => x));
+                console.log(`Content for page ${value} added`);
+                callback();
+
             }).catch((error) => {
                 callback(error);
             });
+
     }, (error) => {
         if (error) { console.log(error); }
-        console.timeEnd("timeblock");
+
+        fs.writeFile(`${moment().format('DDMMYYYYHHmmss')}_full_chedet.json`, JSON.stringify(fullContent), function (err) {
+            if (err) return console.log(err);
+            console.log(`Full chedet blog posts saved!`);
+            console.timeEnd("Completed in");
+        });
     });
 })();
