@@ -119,7 +119,7 @@ var getPostContentByUrl = function name(postList) {
     }, (error) => {
         if (error) { console.log(error); }
 
-        fs.writeFile(`${moment().format('DDMMYYYYHHmmss')}_full_chedet.json`, JSON.stringify(fullContent), function (err) {
+        fs.writeFile(`${moment().format('DDMMYYYYHHmmss')}_chedex_raw.json`, JSON.stringify(fullContent), function (err) {
             if (err) return console.log(err);
             console.log(`Full chedet blog posts saved!`);
             console.timeEnd("Completed in");

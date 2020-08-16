@@ -61,6 +61,8 @@
   "dependencies": {
     "async": "^3.2.0",
     "axios": "^0.19.2",
-    "moment": "^2.27.0"
+    "elasticlunr": "^0.9.5",
+    "moment": "^2.27.0",
+    "stream-json": "^1.7.0"
   }
 }
