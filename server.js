@@ -8,8 +8,8 @@ const chedex = require('./elasticlunr_search');
 const init = async () => {
 
     const server = Hapi.server({
-        port: 3030,
-        host: 'localhost'
+        port: process.argv[2] || 3030
+        //host: 'localhost'
     });
 
     // Load index dump
