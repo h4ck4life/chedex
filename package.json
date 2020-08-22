@@ -1,0 +1,29 @@
+{
+  "name": "chedex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "elasticlunr_indexer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h4ck4life/chedex.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h4ck4life/chedex/issues"
+  },
+  "homepage": "https://github.com/h4ck4life/chedex#readme",
+  "dependencies": {
+    "@hapi/hapi": "^20.0.0",
+    "async": "^3.2.0",
+    "axios": "^0.20.0",
+    "cheerio": "^1.0.0-rc.3",
+    "elasticlunr": "^0.9.5",
+    "moment": "^2.27.0",
+    "stream-json": "^1.7.1"
+  }
+}
