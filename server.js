@@ -13,7 +13,7 @@ const init = async () => {
     });
 
     // Load index dump
-    let indexData = fs.readFileSync("./28082020000440_chedex_index.json");
+    let indexData = fs.readFileSync("./31122020114404_chedex_raw.json");
     let indexDump = JSON.parse(indexData);
     let idx = elasticlunr.Index.load(indexDump);
 
